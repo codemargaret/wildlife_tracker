@@ -2,6 +2,7 @@ class SightingsController < ApplicationController
   def new
     @animal = Animal.find(params[:animal_id])
     @sighting = @animal.sightings.new
+    @region = Region.all
   end
 
   def create
@@ -17,6 +18,7 @@ class SightingsController < ApplicationController
   def edit
     @animal = Animal.find(params[:animal_id])
     @sighting = @animal.sightings.find(params[:id])
+    @region = Region.all
   end
 
   def update
@@ -38,6 +40,6 @@ class SightingsController < ApplicationController
 
 private
   def sighting_params
-    params.require(:sighting).permit(:date, :latitude, :longitude)
+    params.require(:sighting).permit(:date, :latitude, :longitude, :region_id)
   end
 end

@@ -5,10 +5,12 @@
 
   <ul>
     <% @animal.sightings.each do |sighting| %>
+    <% region = Region.find(sighting.region_id) %>
       <li>
         <h3><%= sighting.date %></h3>
         <p><%= sighting.latitude %></p>
         <p><%= sighting.longitude %></p>
+        <p><%= region.name %></p>
         <%= link_to "Edit", edit_animal_sighting_path(@animal, sighting) %> |
         <%= link_to "Delete", animal_sighting_path(@animal, sighting),
                                  :data => {:confirm => "Are you sure?",
