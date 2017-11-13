@@ -19,6 +19,7 @@ class SightingsController < ApplicationController
     @animal = Animal.find(params[:animal_id])
     @sighting = @animal.sightings.find(params[:id])
     @region = Region.all
+    @thisRegion = @sighting.region_id
   end
 
   def update
